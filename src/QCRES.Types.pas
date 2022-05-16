@@ -10,17 +10,19 @@ const
   APP_ID = 58;
   {$IFDEF WIN64} APP_BITS = '64'; {$ELSE} APP_BITS = '32'; {$ENDIF}
   APP_NAME = 'QuickChangeResolution';
-  APP_VER_STR = '1.0';
+  APP_VER_STR = '1.1';
   APP_FULL_NAME = APP_NAME + ' ' + APP_VER_STR + '  [' + APP_BITS + '-bit]';
-  RELEASE_DATE_STR = '2021.03.19';
+  RELEASE_DATE_STR = '2021.10.13';
   URL_HOMEPAGE = 'https://www.pazera-software.com/products/quick-change-resolution/';
   URL_DONATION = 'https://www.pazera-software.com/donation/';
   URL_GITHUB = 'https://github.com/jackdp/Quick-Change-Resolution';
   APP_LICENSE = 'Freeware. Open source';
 
-
   ENUM_CURRENT_SETTINGS  = DWORD(-1);
   ENUM_REGISTRY_SETTINGS = DWORD(-2);
+
+  EXIT_CODE_OK = 0;
+  EXIT_CODE_ERROR = 1;
 
 
 type

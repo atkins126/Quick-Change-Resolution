@@ -3,8 +3,10 @@ unit QCRES.Procs;
 interface
 
 uses
-  Windows,
-  SysUtils, JPL.Conversion,
+  Winapi.Windows, Winapi.ShellAPI,
+  System.SysUtils,
+  Vcl.Forms,
+  JPL.Conversion,
   QCRES.Types;
 
 
@@ -13,12 +15,18 @@ function ChangeDisplayResolution(const DisplayDeviceIndex, NewWidth, NewHeight: 
 procedure GetDisplayDeviceResolutions(const DeviceNo, BitsPerPixel: DWORD; var Arr: TResArray);
 function GetDisplayDeviceInfo(const DeviceHandle: THandle; var DeviceInfo: TDisplayDeviceInfo): Boolean;
 function TryGetRes(const s: string; out Width, Height: DWORD): Boolean;
+procedure GoToUrl(const URL: string);
+procedure CenterForm(Form: TForm);
 
 
 
 implementation
 
 
+procedure GoToUrl(const URL: string);
+begin
+  ShellExecute(0, 'open', PChar(URL), '', '', SW_SHOW);
+end;
 
 function TryGetRes(const s: string; out Width, Height: DWORD): Boolean;
 var
@@ -153,5 +161,13 @@ begin
   end;
 end;
 {$endregion ChangeDisplayResolution}
+
+
+procedure CenterForm(Form: TForm);
+begin
+  Form.Left := (Screen.Width div 2) - (Form.Width div 2);
+  Form.Top := (Screen.Height div 2) - (Form.Height div 2);
+end;
+
 
 end.
